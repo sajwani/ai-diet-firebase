@@ -1,3 +1,4 @@
+import 'package:ai_diet_firebase/get_info.dart';
 import 'package:ai_diet_firebase/net/flutterfire.dart';
 import 'package:ai_diet_firebase/profilescreen.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ class Register extends StatefulWidget {
 
 class _RegisterState extends State<Register> {
   TextEditingController nameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
   TextEditingController _emailField= TextEditingController();
   TextEditingController _passwordField = TextEditingController();
 
@@ -114,7 +115,7 @@ class _RegisterState extends State<Register> {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 25,vertical: 7),
                 child: TextField(
-                  controller: nameController,
+                  controller: phoneController,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     labelText: 'Phone Number',
@@ -152,12 +153,17 @@ class _RegisterState extends State<Register> {
                       ),
                     ),
                     onPressed: ()async {
-                      bool shouldNavigate = await SignUp(_emailField.text,_passwordField.text);
+                      bool shouldNavigate =
+                      await SignUp(
+                          _emailField.text
+                          ,_passwordField.text
+                          ,nameController.text
+                          ,phoneController.text);
                       if(shouldNavigate) {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ProfileScreen(),
+                            builder: (context) => GetInfo(),
                           ),
                         );
                       }

@@ -88,179 +88,179 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: ListView(
-          children:<Widget> [
-        Column(
-          // mainAxisAlignment: MainAxisAlignment.center,
-          // crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            Container(
-              padding: EdgeInsets.fromLTRB(0, 50, 0, 20),
-              width: w,
-              height: h*0.48,
-              child: Image.asset('assets/logo.png'),
-            ),
-            Container(
-              child: Text(
-                'Ready to be healthy?',
-                style: TextStyle(
-                  fontSize: 38.5,
-                ),
+        children:<Widget> [
+          Column(
+            // mainAxisAlignment: MainAxisAlignment.center,
+            // crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                padding: EdgeInsets.fromLTRB(0, 50, 0, 20),
+                width: w,
+                height: h*0.48,
+                child: Image.asset('assets/logo.png'),
               ),
-            ),
-            SizedBox(
-              width: 300 ,
-              child: TextFormField(
-                controller: _emailController,
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.fromLTRB(0,25,0,0),
-                  hintText: 'Name.Last@gmail.com',
-                  border: UnderlineInputBorder(),
-                  prefixIcon: Padding(
-                    padding: EdgeInsets.fromLTRB(10, 20, 0, 0),
-                    child: Icon(Icons.mail),
+              Container(
+                child: Text(
+                  'Ready to be healthy?',
+                  style: TextStyle(
+                    fontSize: 38.5,
                   ),
                 ),
               ),
-            ),
-            SizedBox(
-              width: 300 ,
-              child: TextFormField(
-                controller: _passwordController,
-                obscureText: true,
-                decoration: InputDecoration(
-                  contentPadding: EdgeInsets.fromLTRB(0, 25, 0, 0),
-                  hintText: ' **********',
-                  border: UnderlineInputBorder(),
-                  prefixIcon: Padding(
-                    padding: EdgeInsets.fromLTRB(10, 20, 0, 0),
-                    child: Icon(Icons.lock),
-                  ),
-                ),
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children:<Widget> [
-                Container(
-                  child: TextButton(
-                    style: ButtonStyle(
-                      foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+              SizedBox(
+                width: 300 ,
+                child: TextFormField(
+                  controller: _emailController,
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.fromLTRB(0,25,0,0),
+                    hintText: 'Name.Last@gmail.com',
+                    border: UnderlineInputBorder(),
+                    prefixIcon: Padding(
+                      padding: EdgeInsets.fromLTRB(10, 20, 0, 0),
+                      child: Icon(Icons.mail),
                     ),
-                    onPressed: (){},
-                    child: Text("Forgot your password?"),
                   ),
                 ),
-              ],
-            ),
-            ElevatedButton(
-
-              style: ElevatedButton.styleFrom(
-                  primary: Colors.lightBlue,
-                  padding: EdgeInsets.symmetric(horizontal: 15,vertical: 7),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50),
-                  )
               ),
-              child: Text(
-                'Sign in',
-                style: TextStyle(
-                    fontSize: 27
+              SizedBox(
+                width: 300 ,
+                child: TextFormField(
+                  controller: _passwordController,
+                  obscureText: true,
+                  decoration: InputDecoration(
+                    contentPadding: EdgeInsets.fromLTRB(0, 25, 0, 0),
+                    hintText: 'password',
+                    border: UnderlineInputBorder(),
+                    prefixIcon: Padding(
+                      padding: EdgeInsets.fromLTRB(10, 20, 0, 0),
+                      child: Icon(Icons.lock),
+                    ),
+                  ),
                 ),
               ),
-              onPressed: () async {
-                User? user = await loginusingEmailPassword(
-                    email: _emailController.text,
-                    password: _passwordController.text,
-                    context: context);
-                print(user);
-                if (user != null) {
-                  Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) => ProfileScreen()
-                      )
-                  );
-                }
-              },
-            ),
-
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  primary: Colors.lightBlue,
-                  padding: EdgeInsets.symmetric(horizontal: 15,vertical: 6),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50),
-                  )
-              ),
-              onPressed: () {},
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text('Sign in With Google',
-                      style: TextStyle(
-                          fontSize: 21
-                      )
-                  ), // <-- Text
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Icon( // <-- Icon
-                    Icons.android,//Google.g1,
-                    size: 25.0,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children:<Widget> [
+                  Container(
+                    child: TextButton(
+                      style: ButtonStyle(
+                        foregroundColor: MaterialStateProperty.all<Color>(Colors.black),
+                      ),
+                      onPressed: (){},
+                      child: Text("Forgot your password?"),
+                    ),
                   ),
                 ],
               ),
-            ),
+              ElevatedButton(
 
-            SizedBox(
-              width: w*0.763,
-              child: ElevatedButton.icon(
                 style: ElevatedButton.styleFrom(
-                    primary: Colors.black,
-                    padding: EdgeInsets.symmetric(horizontal: 0,vertical: 5),
+                    primary: Colors.lightBlue,
+                    padding: EdgeInsets.symmetric(horizontal: 15,vertical: 7),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50),
                     )
                 ),
-                icon: Icon(Icons.apple,size:30),
-                label: Text(
-                  "Sign in With Apple",
+                child: Text(
+                  'Sign in',
                   style: TextStyle(
-                    fontSize: 23,
+                      fontSize: 27
                   ),
                 ),
-                onPressed: () {},
-              ),
-            ),
-
-            Container(
-              padding: EdgeInsets.fromLTRB(0, 15, 0, 0),
-              child: Text(
-                "Don't have an account?",
-                style: TextStyle(
-                    fontSize: 15
-                ),
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.zero,
-              child: TextButton(
-                  onPressed: (){
+                onPressed: () async {
+                  User? user = await loginusingEmailPassword(
+                      email: _emailController.text,
+                      password: _passwordController.text,
+                      context: context);
+                  print(user);
+                  if (user != null) {
                     Navigator.of(context).pushReplacement(
-                        MaterialPageRoute(builder: (context) => Register()
+                        MaterialPageRoute(builder: (context) => ProfileScreen()
                         )
                     );
-                  },
-                  child: Text(
-                    'REGISTER',
-                    style: TextStyle(
-                        fontSize: 15,
-                        color: Colors.lightBlue
-                    ),
-                  )
+                  }
+                },
               ),
-            )
-          ],
-        ),
-    ],
+
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    primary: Colors.lightBlue,
+                    padding: EdgeInsets.symmetric(horizontal: 15,vertical: 6),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50),
+                    )
+                ),
+                onPressed: () {},
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text('Sign in With Google',
+                        style: TextStyle(
+                            fontSize: 21
+                        )
+                    ), // <-- Text
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Icon( // <-- Icon
+                      Icons.android,//Google.g1,
+                      size: 25.0,
+                    ),
+                  ],
+                ),
+              ),
+
+              SizedBox(
+                width: w*0.763,
+                child: ElevatedButton.icon(
+                  style: ElevatedButton.styleFrom(
+                      primary: Colors.black,
+                      padding: EdgeInsets.symmetric(horizontal: 0,vertical: 5),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50),
+                      )
+                  ),
+                  icon: Icon(Icons.apple,size:30),
+                  label: Text(
+                    "Sign in With Apple",
+                    style: TextStyle(
+                      fontSize: 23,
+                    ),
+                  ),
+                  onPressed: () {},
+                ),
+              ),
+
+              Container(
+                padding: EdgeInsets.fromLTRB(0, 15, 0, 0),
+                child: Text(
+                  "Don't have an account?",
+                  style: TextStyle(
+                      fontSize: 15
+                  ),
+                ),
+              ),
+              Container(
+                padding: EdgeInsets.zero,
+                child: TextButton(
+                    onPressed: (){
+                      Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (context) => Register()
+                          )
+                      );
+                    },
+                    child: Text(
+                      'REGISTER',
+                      style: TextStyle(
+                          fontSize: 15,
+                          color: Colors.lightBlue
+                      ),
+                    )
+                ),
+              )
+            ],
+          ),
+        ],
       ),
     );
 
